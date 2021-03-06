@@ -40,6 +40,14 @@ public class CopyFile {
 		FSDataOutputStream out = null;
 
 		// TODO: Your implementation goes here...
+		try
+		{
+			in = inFS.open(new Path(src));
+			out = outFS.create(new Path(dst));
+			IOUtils.copyBytes(in, out, 4096, true);
+		} finally {
+			IOUtils.closeStream(in);
+		}
 
 	}
 
